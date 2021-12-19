@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>speedometer</title>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<style id="applicationStylesheet" type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap');
+	.mediaViewInfo {
+		--web-view-name: Canvas;
+		--web-view-id: Canvas;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: Canvas;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#Canvas {
+		position: absolute;
+		width: 1920px;
+		height: 1080px;
+		background-color: rgba(0,0,0,0);
+		overflow: hidden;
+		--web-view-name: Canvas;
+		--web-view-id: Canvas;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	#All {
+		position: absolute;
+		width: 314px;
+		height: 52.478px;
+		left: 803px;
+		top: 1003.522px;
+		overflow: visible;
+	}
+	#BASE {
+		position: absolute;
+		width: 300px;
+		height: 50px;
+		left: 7px;
+		top: 2.478px;
+		overflow: visible;
+	}
+	#BASE_i {
+		position: absolute;
+		width: 300px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#BASE_j {
+		fill: rgba(26,26,26,1);
+		stroke: rgba(38,38,38,1);
+		stroke-width: 3px;
+		stroke-linejoin: round;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.BASE_j {
+		filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.38));
+		position: absolute;
+		overflow: visible;
+		width: 327px;
+		height: 77px;
+		left: 0px;
+		top: 0px;
+	}
+	#Clip {
+		position: absolute;
+		width: 300px;
+		height: 50px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#KMH2 {
+		position: absolute;
+		width: 52.326px;
+		height: 48.622px;
+		left: 131.758px;
+		top: 0px;
+		overflow: visible;
+	}
+	#KMH3 {
+		position: absolute;
+		width: 52.326px;
+		height: 48.622px;
+		left: 131.758px;
+		top: 0px;
+		overflow: visible;
+	}
+	#testestest {
+		filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.38));
+		left: 12.242px;
+		top: 38px;
+		position: absolute;
+		overflow: visible;
+		width: 26px;
+		white-space: nowrap;
+		line-height: 356.2238464355469px;
+		margin-top: -173.25432300567627px;
+		text-align: center;
+		font-family: 'Poppins', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 9.715200424194336px;
+		color: rgba(237,238,242,1);
+	}
+	#text {
+		position: absolute;
+		width: 52.326px;
+		height: 45px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#speed {
+		filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.251));
+		left: 0px;
+		top: 4px;
+		position: absolute;
+		overflow: visible;
+		width: 53px;
+		white-space: nowrap;
+		line-height: 447.60302734375px;
+		margin-top: -207.52504348754883px;
+		text-align: center;
+		font-family: 'Poppins', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 27px;
+		 background-image:linear-gradient(90deg, #ee2a2a, #f72b2b);
+ 		-webkit-background-clip: text;
+ 		-webkit-text-fill-color: transparent;
+	}
+	#Gradient_Overlay_q {
+		fill: url(#Gradient_Overlay_q);
+	}
+	.Gradient_Overlay_q {
+		overflow: visible;
+		position: absolute;
+		width: 51.759px;
+		height: 23.764px;
+		left: 0px;
+		top: 10.236px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#GAS {
+		position: absolute;
+		width: 89.133px;
+		height: 30px;
+		left: 0px;
+		top: 12.478px;
+		overflow: visible;
+	}
+	#Ellipse_1 {
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 0px;
+		top: 0px;
+		overflow: visible;
+	}
+	#Ellipse_1_t {
+		fill: rgba(38,38,38,1);
+		stroke: rgba(38,38,38,1);
+		stroke-width: 3px;
+		stroke-linejoin: round;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Ellipse_1_t {
+		filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 1));
+		position: absolute;
+		overflow: visible;
+		width: 66px;
+		height: 66px;
+		left: 0px;
+		top: 0px;
+	}
+	#Gradient_Overlay_v {
+		fill: url(#Gradient_Overlay_v);
+	}
+	.Gradient_Overlay_v {
+		overflow: visible;
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#gas-pump-solid {
+		filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.38));
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 0px;
+		top: 2px;
+		overflow: visible;
+	}
+	#ID24L75L {
+		filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.38));
+		left: 43.133px;
+		top: 9px;
+		position: absolute;
+		overflow: visible;
+		width: 47px;
+		white-space: nowrap;
+		line-height: 458.33331298828125px;
+		margin-top: -222.91665649414062px;
+		text-align: center;
+		font-family: 'Poppins', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12.5px;
+		color: rgba(237,238,242,1);
+	}
+	#KM {
+		position: absolute;
+		width: 87.867px;
+		height: 30px;
+		left: 226.133px;
+		top: 12.478px;
+		overflow: visible;
+	}
+	#Ellipse_1_copy {
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 57.867px;
+		top: 0px;
+		overflow: visible;
+	}
+	#Ellipse_1_copy_ {
+		fill: rgba(38,38,38,1);
+	}
+	.Ellipse_1_copy_ {
+		filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.251));
+		position: absolute;
+		overflow: visible;
+		width: 39px;
+		height: 39px;
+		left: 0px;
+		top: 0px;
+	}
+	#Gradient_Overlay_ba {
+		fill: url(#Gradient_Overlay_ba);
+	}
+	.Gradient_Overlay_ba {
+		overflow: visible;
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 0px;
+		top: 0px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#map-marker-alt-solid {
+		filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.38));
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		left: 58px;
+		top: 2px;
+		overflow: visible;
+	}
+	#ID421637 {
+		filter: drop-shadow(0px 2px 7px rgba(0, 0, 0, 0.38));
+		left: -5px;
+		top: 9px;
+		position: absolute;
+		overflow: visible;
+		width: 46px;
+		white-space: nowrap;
+		line-height: 458.33331298828125px;
+		margin-top: -222.91665649414062px;
+		text-align: center;
+		font-family: 'Poppins', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 12.5px;
+		color: rgba(237,238,242,1);
+	}
+</style>
+</head>
+<body>
+<div id="Canvas">
+<div id="All">
+   <div class="carStats" style="display: none;">
+      <div id="BASE">
+         <div id="BASE_i">
+            <svg class="BASE_j">
+               <rect id="BASE_j" rx="25" ry="25" x="0" y="0" width="300" height="50">
+               </rect>
+            </svg>
+            <img id="Clip" src="img/Clip.png">
+         </div>
+      </div>
+      <svg class="circle" width="100" height="100">
+         <circle class="progress progress-speed" stroke="url(#gradient)" stroke-width="2.5" style="stroke-opacity: 1;" fill="transparent" r="18" cx="25" cy="25" stroke-dasharray="70 30" stroke-dashoffset="0"/>
+         <defs>
+         </defs>
+      </svg>
+      <div id="KMH3">
+         <div id="text">
+            <div id="speed">
+               <span></span>
+            </div>
+            <svg class="Gradient_Overlay_q" viewBox="934.758 1013.758 51.759 23.764">
+               <linearGradient id="Gradient_Overlay_q" spreadMethod="pad" x1="0.388" x2="0.612" y1="1" y2="0">
+                  <stop offset="0" stop-color="#ee2a2a" stop-opacity="1"></stop>
+                  <stop offset="1" stop-color="#f72b2b" stop-opacity="0.996"></stop>
+               </linearGradient>
+            </svg>
+         </div>
+      </div>
+      <div id="KMH2">
+         <div id="testestest">
+            <p>KM/H</p>
+         </div>
+      </div>
+      <div id="GAS">
+         <div id="Ellipse_1">
+            <svg class="Ellipse_1_t">
+               <ellipse id="Ellipse_1_t" rx="15" ry="15" cx="15" cy="15">
+               </ellipse>
+            </svg>
+            <svg class="Gradient_Overlay_v" viewBox="803 1016 30 30">
+               <linearGradient id="Gradient_Overlay_v" spreadMethod="pad" x1="0.256" x2="0.744" y1="1" y2="0">
+                  <stop offset="0" stop-color="#ee2a2a" stop-opacity="1"></stop>
+                  <stop offset="1" stop-color="#f72b2b" stop-opacity="0.996"></stop>
+               </linearGradient>
+               <path id="Gradient_Overlay_v" d="M 818 1016 C 826.2843017578125 1016 833 1022.715759277344 833 1031 C 833 1039.284301757813 826.2843017578125 1046 818 1046 C 809.7157592773438 1046 803 1039.284301757813 803 1031 C 803 1022.715759277344 809.7157592773438 1016 818 1016 Z">
+               </path>
+            </svg>
+         </div>
+         <img id="gas-pump-solid" src="img/gas-pump-solid.png">
+         <div id="ID24L75L">
+            <div id="fueltext">
+               <span>0L</span>
+            </div>
+         </div>
+      </div>
+      <div id="KM">
+         <div id="Ellipse_1_copy">
+            <svg class="Ellipse_1_copy_">
+               <ellipse id="Ellipse_1_copy_" rx="15" ry="15" cx="15" cy="15">
+               </ellipse>
+            </svg>
+            <svg class="Gradient_Overlay_ba" viewBox="1087 1016 30 30">
+               <linearGradient id="Gradient_Overlay_ba" spreadMethod="pad" x1="0.256" x2="0.744" y1="1" y2="0">
+                  <stop offset="0" stop-color="#ee2a2a" stop-opacity="1"></stop>
+                  <stop offset="1" stop-color="#f72b2b" stop-opacity="0.996"></stop>
+               </linearGradient>
+               <path id="Gradient_Overlay_ba" d="M 1102 1016 C 1110.284301757813 1016 1117 1022.715759277344 1117 1031 C 1117 1039.284301757813 1110.284301757813 1046 1102 1046 C 1093.715698242188 1046 1087 1039.284301757813 1087 1031 C 1087 1022.715759277344 1093.715698242188 1016 1102 1016 Z">
+               </path>
+            </svg>
+         </div>
+         <img id="map-marker-alt-solid" src="img/map-marker-alt-solid.png">
+         <div id="ID421637">
+            <div id="kmtext">
+               <span>0</span>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</body>
+</html>
